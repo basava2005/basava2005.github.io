@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Basavaraj H A | Cyberpunk Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AI Architect | IoT Engineer | Full Stack Developer - Cyberpunk Portfolio of Basavaraj H A" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Icons (optional) -->
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" />
+
+  <style>
+    :root {
+      --bg-main: #050510;
+      --bg-card: rgba(9, 9, 26, 0.9);
+      --accent-cyan: #00f5ff;
+      --accent-magenta: #ff00ff;
+      --accent-purple: #8a2be2;
+      --text-main: #f8f8ff;
+      --text-muted: #a0a0c0;
+      --border-glow: 0 0 18px rgba(0, 245, 255, 0.4);
+      --radius-lg: 18px;
+      --transition-fast: 0.25s ease-out;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #141432 0, #050510 55%, #000 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Animated gradient background overlay */
+    .bg-animated {
+      position: fixed;
+      inset: -100px;
+      z-index: -2;
+      background: radial-gradient(circle at 0% 0%, rgba(0, 245, 255, 0.12), transparent 55%),
+                  radial-gradient(circle at 100% 0%, rgba(255, 0, 255, 0.1), transparent 60%),
+                  radial-gradient(circle at 10% 100%, rgba(138, 43, 226, 0.15), transparent 55%);
+      filter: blur(3px);
+      animation: drift 20s infinite alternate ease-in-out;
+    }
+
+    @keyframes drift {
+      0% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+      50% {
+        transform: translate3d(-30px, -20px, 0) scale(1.05);
+      }
+      100% {
+        transform: translate3d(30px, 20px, 0) scale(1.02);
+      }
+    }
+
+    /* Grid noise overlay */
+    .bg-noise {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      opacity: 0.25;
+      pointer-events: none;
+      background-image: linear-gradient(
+          rgba(255, 255, 255, 0.025) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.02) 1px,
+          transparent 1px
+        );
+      background-size: 140px 140px;
+      mix-blend-mode: screen;
+    }
+
+    .scanline {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0,
+        rgba(0, 0, 0, 0) 2px,
+        rgba(0, 0, 0, 0.35) 3px
+      );
+      opacity: 0.22;
+      z-index: -1;
+    }
+
+    /* Layout */
+    .container {
+      width: min(1120px, 100% - 2.5rem);
+      margin: 0 auto;
+      padding-top: 90px;
+      padding-bottom: 80px;
+    }
+
+    /* Navbar */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(5, 5, 16, 0.92),
+        rgba(5, 5, 16, 0.65),
+        transparent
+      );
+      border-bottom: 1px solid rgba(0, 245, 255, 0.15);
+    }
+
+    .nav {
+      width: min(1120px, 100% - 2.5rem);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: "Orbitron", system-ui;
+      font-weight: 600;
+      letter-spacing: 0.12rem;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+      color: var(--accent-cyan);
+    }
+
+    .nav-logo span {
+      font-size: 1.1rem;
+      color: var(--accent-magenta);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.1rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      text-decoration: none;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12rem;
+      font-size: 0.75rem;
+      padding-bottom: 0.25rem;
+      transition: color var(--transition-fast);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-magenta));
+      border-radius: 999px;
+      transition: width var(--transition-fast);
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 245, 255, 0.6);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12rem;
+      background: radial-gradient(circle at top left, rgba(0, 245, 255, 0.15), transparent);
+      color: var(--accent-cyan);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      box-shadow: 0 0 10px rgba(0, 245, 255, 0.35);
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px) scale(1.02);
+      box-shadow: 0 0 18px rgba(255, 0, 255, 0.45);
+      border-color: var(--accent-magenta);
+      color: #fff;
+    }
+
+    /* Mobile nav */
+    .nav-toggle {
+      display: none;
+      font-size: 1.6rem;
+      color: var(--accent-cyan);
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .nav-menu-open .nav-links,
+      .nav-menu-open .nav-cta {
+        display: flex;
+      }
+
+      .nav-menu-open .nav {
+        flex-wrap: wrap;
+        row-gap: 0.6rem;
+      }
+
+      .nav-menu-open .nav-links {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.2fr);
+      gap: 2.5rem;
+      align-items: center;
+      margin-top: 1.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        margin-top: 1rem;
+      }
+    }
+
+    .hero-left {
+      position: relative;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      border-radius: 999px;
+      padding: 0.18rem 0.6rem;
+      border: 1px solid rgba(0, 245, 255, 0.5);
+      background: radial-gradient(circle at left, rgba(0, 245, 255, 0.18), transparent);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.14rem;
+      text-transform: uppercase;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-kicker span {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #00f5ff, transparent);
+      box-shadow: 0 0 12px rgba(0, 245, 255, 0.8);
+    }
+
+    .hero-title {
+      font-family: "Orbitron", system-ui;
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      text-transform: uppercase;
+      letter-spacing: 0.18rem;
+      line-height: 1.25;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-magenta));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 480px;
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .tag-pill {
+      border-radius: 999px;
+      border: 1px solid rgba(138, 43, 226, 0.55);
+      padding: 0.18rem 0.55rem;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12rem;
+      color: var(--text-muted);
+      background: linear-gradient(
+        120deg,
+        rgba(138, 43, 226, 0.26),
+        rgba(0, 245, 255, 0.08)
+      );
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      border-radius: 999px;
+      padding: 0.55rem 1.25rem;
+      border: 1px solid transparent;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16rem;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-magenta));
+      color: #050510;
+      box-shadow: 0 0 18px rgba(0, 245, 255, 0.65);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px) scale(1.02);
+      box-shadow: 0 0 25px rgba(255, 0, 255, 0.7);
+    }
+
+    .btn-ghost {
+      border-color: rgba(0, 245, 255, 0.55);
+      color: var(--accent-cyan);
+      background: radial-gradient(circle at top left, rgba(0, 245, 255, 0.12), transparent);
+    }
+
+    .btn-ghost:hover {
+      background: radial-gradient(circle at bottom right, rgba(255, 0, 255, 0.16), transparent);
+      color: #fff;
+      border-color: var(--accent-magenta);
+    }
+
+    .hero-status {
+      margin-top: 0.9rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      opacity: 0.85;
+    }
+
+    .hero-status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #00ff7f;
+      box-shadow: 0 0 12px rgba(0, 255, 127, 0.8);
+      animation: pulse 1.5s infinite ease-out;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      70% {
+        transform: scale(1.7);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 0;
+      }
+    }
+
+    /* Hero right hologram card */
+    .hero-right {
+      display: flex;
+      justify-content: center;
+    }
+
+    .holo-card {
+      position: relative;
+      width: min(360px, 100%);
+      border-radius: 24px;
+      padding: 1.4rem 1.2rem;
+      background: radial-gradient(circle at top, rgba(0, 245, 255, 0.12), rgba(5, 5, 16, 0.97));
+      border: 1px solid rgba(0, 245, 255, 0.45);
+      box-shadow: 0 0 26px rgba(0, 245, 255, 0.35);
+      overflow: hidden;
+      transform: perspective(1200px) rotateX(10deg) rotateY(-10deg);
+      transform-style: preserve-3d;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: perspective(1200px) rotateX(10deg) rotateY(-10deg) translateY(0);
+      }
+      50% {
+        transform: perspective(1200px) rotateX(10deg) rotateY(-10deg) translateY(-10px);
+      }
+    }
+
+    .holo-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.13rem;
+      color: var(--text-muted);
+    }
+
+    .holo-chip {
+      width: 40px;
+      height: 26px;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 245, 255, 0.6);
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(255, 0, 255, 0.18));
+    }
+
+    .holo-main {
+      text-align: left;
+      margin-bottom: 1.1rem;
+    }
+
+    .holo-avatar-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .holo-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 2px solid rgba(0, 245, 255, 0.8);
+      padding: 2px;
+      background: radial-gradient(circle, rgba(0, 245, 255, 0.3), rgba(5, 5, 16, 1));
+      object-fit: cover;
+      box-shadow: 0 0 18px rgba(0, 245, 255, 0.6);
+    }
+
+    .holo-name {
+      font-family: "Orbitron";
+      font-size: 1.1rem;
+      letter-spacing: 0.16rem;
+      text-transform: uppercase;
+      margin-bottom: 0.15rem;
+    }
+
+    .holo-role {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .holo-role span {
+      color: var(--accent-cyan);
+    }
+
+    .holo-divider {
+      height: 1px;
+      margin: 0.9rem 0;
+      background: linear-gradient(90deg, transparent, rgba(0, 245, 255, 0.7), transparent);
+    }
+
+    .holo-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.6rem;
+      font-size: 0.75rem;
+    }
+
+    .metric-label {
+      color: var(--text-muted);
+      margin-bottom: 0.1rem;
+    }
+
+    .metric-value {
+      font-family: "Orbitron";
+      font-size: 0.9rem;
+      color: var(--accent-cyan);
+    }
+
+    .holo-footer {
+      margin-top: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .holo-badge {
+      border-radius: 999px;
+      padding: 0.15rem 0.6rem;
+      border: 1px solid rgba(255, 0, 255, 0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.12rem;
+      font-size: 0.65rem;
+      color: var(--accent-magenta);
+    }
+
+    .holo-glow-orb {
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 245, 255, 0.6), transparent);
+      top: 45%;
+      right: -40px;
+      opacity: 0.4;
+      filter: blur(2px);
+      mix-blend-mode: screen;
+    }
+
+    /* Section base */
+    section {
+      margin-top: 3.5rem;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1.8rem;
+      gap: 1rem;
+    }
+
+    .section-title {
+      font-family: "Orbitron";
+      letter-spacing: 0.15rem;
+      text-transform: uppercase;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-title span {
+      font-size: 1.15rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      max-width: 420px;
+    }
+
+    .glass-panel {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(0, 245, 255, 0.25);
+      box-shadow: var(--border-glow);
+      padding: 1.3rem 1.2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        120deg,
+        rgba(0, 245, 255, 0.2),
+        transparent 40%,
+        rgba(255, 0, 255, 0.14)
+      );
+      mix-blend-mode: soft-light;
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    .about-text {
+      position: relative;
+      z-index: 1;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .about-text b {
+      color: var(--accent-cyan);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.3fr);
+      gap: 1.4rem;
+    }
+
+    @media (max-width: 840px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .about-list {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 0.7rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .about-list span {
+      color: var(--text-main);
+    }
+
+    /* Education */
+    .education-item {
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .edu-title {
+      font-family: "Orbitron";
+      font-size: 1rem;
+      letter-spacing: 0.15rem;
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      color: var(--accent-magenta);
+    }
+
+    .edu-college {
+      color: var(--accent-cyan);
+      margin-bottom: 0.35rem;
+      font-size: 0.9rem;
+    }
+
+    .edu-college span {
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .edu-details {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 700px;
+    }
+
+    .edu-meta {
+      margin-top: 0.3rem;
+      font-size: 0.75rem;
+      color: var(--accent-magenta);
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+    }
+
+    /* Focus */
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .focus-card {
+      position: relative;
+      padding: 1rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255, 0, 255, 0.4);
+      background: radial-gradient(circle at top left, rgba(255, 0, 255, 0.18), transparent);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      overflow: hidden;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .focus-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at bottom right, rgba(0, 245, 255, 0.16), transparent 50%);
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+      mix-blend-mode: screen;
+    }
+
+    .focus-card h3 {
+      font-family: "Orbitron";
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.13rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+    }
+
+    .focus-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 20px rgba(255, 0, 255, 0.65);
+      border-color: rgba(0, 245, 255, 0.8);
+    }
+
+    .focus-card:hover::after {
+      opacity: 1;
+    }
+
+    /* Tech stack */
+    .stack-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.4fr);
+      gap: 1.2rem;
+    }
+
+    @media (max-width: 840px) {
+      .stack-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .stack-group-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .stack-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .stack-tag {
+      font-size: 0.8rem;
+      padding: 0.28rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(5, 5, 22, 0.9);
+      border: 1px solid rgba(0, 245, 255, 0.35);
+      color: var(--text-main);
+      backdrop-filter: blur(10px);
+      white-space: nowrap;
+    }
+
+    .stack-tag.alt {
+      border-color: rgba(255, 0, 255, 0.45);
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .project-card {
+      position: relative;
+      padding: 1.2rem 1.1rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(0, 245, 255, 0.3);
+      background: rgba(7, 7, 24, 0.97);
+      overflow: hidden;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px) translateZ(0);
+      box-shadow: 0 18px 35px rgba(0, 0, 0, 0.8), 0 0 22px rgba(0, 245, 255, 0.6);
+      border-color: rgba(255, 0, 255, 0.75);
+    }
+
+    .project-pill {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12rem;
+      color: var(--accent-cyan);
+      margin-bottom: 0.4rem;
+    }
+
+    .project-title {
+      font-family: "Orbitron";
+      font-size: 0.95rem;
+      margin-bottom: 0.4rem;
+      color: #fff;
+    }
+
+    .project-desc {
+      font-size: 0.87rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 0.8rem;
+    }
+
+    .project-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .project-link {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.13rem;
+      color: var(--accent-magenta);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+
+    .project-link i {
+      font-size: 1rem;
+    }
+
+    /* Stats section */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.2fr);
+      gap: 1.3rem;
+    }
+
+    @media (max-width: 840px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .stat-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0.9rem;
+    }
+
+    .stat-card {
+      padding: 0.9rem 0.85rem;
+      border-radius: var(--radius-lg);
+      background: rgba(7, 7, 26, 0.95);
+      border: 1px solid rgba(0, 245, 255, 0.3);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .stat-card span {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12rem;
+    }
+
+    .stat-card strong {
+      display: block;
+      margin-top: 0.25rem;
+      font-family: "Orbitron";
+      font-size: 1.1rem;
+      color: var(--accent-cyan);
+    }
+
+    .quote-box {
+      padding: 1rem;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, rgba(0, 245, 255, 0.12), rgba(255, 0, 255, 0.12));
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      position: relative;
+      overflow: hidden;
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .quote-box::before {
+      content: "❝";
+      position: absolute;
+      top: -26px;
+      left: 8px;
+      font-size: 4rem;
+      color: rgba(5, 5, 16, 0.66);
+    }
+
+    .quote-main {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+
+    .quote-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 840px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.8rem;
+    }
+
+    .contact-chip {
+      text-decoration: none;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(7, 7, 24, 0.96);
+      border: 1px solid rgba(0, 245, 255, 0.4);
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--text-main);
+      transition: all var(--transition-fast);
+    }
+
+    .contact-chip:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 0, 255, 0.8);
+      box-shadow: 0 0 16px rgba(255, 0, 255, 0.6);
+    }
+
+    .contact-chip i {
+      font-size: 1rem;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 0.7rem;
+      font-size: 0.85rem;
+    }
+
+    .field {
+      display: grid;
+      gap: 0.25rem;
+    }
+
+    .field label {
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.12rem;
+      text-transform: uppercase;
+    }
+
+    .field input,
+    .field textarea {
+      background: rgba(2, 2, 18, 0.9);
+      border-radius: 999px;
+      border: 1px solid rgba(0, 245, 255, 0.5);
+      padding: 0.55rem 0.9rem;
+      outline: none;
+      color: var(--text-main);
+      font-size: 0.85rem;
+      font-family: inherit;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+    }
+
+    .field textarea {
+      border-radius: 14px;
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: rgba(255, 0, 255, 0.8);
+      box-shadow: 0 0 14px rgba(0, 245, 255, 0.6);
+      background: rgba(5, 5, 26, 0.95);
+    }
+
+    .contact-note {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 3rem;
+      padding-top: 1.3rem;
+      border-top: 1px solid rgba(0, 245, 255, 0.22);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    footer span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    footer span i {
+      font-size: 1rem;
+      color: var(--accent-magenta);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 600px) {
+      .section-header {
+        flex-direction: column;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-right {
+        order: -1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-animated"></div>
+  <div class="bg-noise"></div>
+  <div class="scanline"></div>
+
+  <header>
+    <div class="nav">
+      <div class="nav-logo">
+        <span>◎</span> BASAVARAJ H A
+      </div>
+
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#focus">Focus</a>
+        <a href="#stack">Stack</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+        Contact
+      </button>
+
+      <div class="nav-toggle" id="navToggle">
+        <i class="bx bx-menu"></i>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero reveal">
+      <div class="hero-left">
+        <div class="hero-kicker">
+          <span></span> AI • IOT • FULL STACK
+        </div>
+        <h1 class="hero-title">
+          Hey, I'm <span>Basavaraj H A</span>
+        </h1>
+        <p class="hero-subtitle">
+          AI Architect • IoT Engineer • Full Stack Developer.<br />
+          I build intelligent, connected & autonomous systems that live between hardware and software.
+        </p>
+        <div class="hero-tags">
+          <div class="tag-pill">AI / LLM Systems</div>
+          <div class="tag-pill">Computer Vision</div>
+          <div class="tag-pill">Smart IoT Networks</div>
+          <div class="tag-pill">System Automation</div>
+        </div>
+        <div class="hero-actions">
+          <a href="#projects" class="btn-primary">
+            View Projects <i class="bx bx-right-arrow-alt"></i>
+          </a>
+          <a href="#about" class="btn-ghost">
+            System Overview <i class="bx bx-chip"></i>
+          </a>
+        </div>
+        <div class="hero-status">
+          <span class="hero-status-dot"></span>
+          Currently exploring: LLM agents, smart surveillance & autonomous IoT.
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="holo-card">
+          <div class="holo-header">
+            <span>PROFILE CORE</span>
+            <div class="holo-chip"></div>
+          </div>
+          <div class="holo-main">
+            <div class="holo-avatar-wrapper">
+              <img src="assets/basavaraj.jpg" alt="Basavaraj H A" class="holo-avatar" />
+              <div>
+                <div class="holo-name">BASAVARAJ H A</div>
+                <div class="holo-role">
+                  AI + IoT Innovator • <span>Full Stack Engineer</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="holo-divider"></div>
+          <div class="holo-metrics">
+            <div>
+              <div class="metric-label">Focus</div>
+              <div class="metric-value">AI / IoT</div>
+            </div>
+            <div>
+              <div class="metric-label">Mode</div>
+              <div class="metric-value">Night Dev</div>
+            </div>
+            <div>
+              <div class="metric-label">Fuel</div>
+              <div class="metric-value">☕ + 🎧</div>
+            </div>
+          </div>
+          <div class="holo-footer">
+            <span>Location: Earth / IN</span>
+            <span class="holo-badge">System Online</span>
+          </div>
+          <div class="holo-glow-orb"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="reveal">
+      <div class="section-header">
+        <h2 class="section-title"><span>⚡</span> About Me</h2>
+        <p class="section-subtitle">
+          Building futuristic applications that connect sensors, intelligence & humans into one seamless system.
+        </p>
+      </div>
+
+      <div class="glass-panel about-grid">
+        <div class="about-text">
+          I'm an <b>AI + IoT Innovator</b> focused on crafting intelligent, connected and autonomous systems.<br /><br />
+          I enjoy working in the space where <b>hardware</b> meets <b>software</b> — from microcontrollers and sensors to cloud APIs and full stack apps.
+          My work revolves around <b>LLMs, computer vision, smart surveillance, automation</b> and scalable system design.
+        </div>
+
+        <div class="about-list">
+          <div><span>🧠 Specialized in:</span> AI • IoT • System Automation • Full Stack • Computer Vision</div>
+          <div><span>🚀 Goal:</span> Become a world-class AI engineer & tech founder</div>
+          <div><span>🎧 Fuel:</span> Coffee, synthwave & late-night coding sessions</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="reveal">
+      <div class="section-header">
+        <h2 class="section-title"><span>🎓</span> Education & Qualification</h2>
+        <p class="section-subtitle">
+          My academic journey in Information Science & Engineering.
+        </p>
+      </div>
+
+      <div class="glass-panel">
+        <div class="education-item">
+          <h3 class="edu-title">B.E – Information Science & Engineering (5th Semester)</h3>
+          <p class="edu-college">
+            <b>College:</b> <span>GM Institute of Technology, Davanagere</span>
+          </p>
+          <p class="edu-college">
+            <b>University:</b> <span>Visvesvaraya Technological University (VTU)</span>
+          </p>
+          <p class="edu-details">
+            Currently pursuing Information Science & Engineering with a strong focus on AI, IoT, software systems,
+            networking, data structures, operating systems and modern computing technologies.
+          </p>
+          <div class="edu-meta">📍 Davanagere, Karnataka, India</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOCUS -->
+    <section id="focus" class="reveal">
+      <div class="section-header">
+        <h2 class="section-title"><span>🔭</span> Current Focus</h2>
+        <p class="section-subtitle">
+          Areas I'm actively experimenting with, prototyping and deploying in real-world environments.
+        </p>
+      </div>
+
+      <div class="focus-grid">
+        <div class="focus-card">
+          <h3>LLM Systems & Tooling</h3>
+          Building LLM-based conversational systems, code analyzers & domain assistants with tool integrations.
+        </div>
+        <div class="focus-card">
+          <h3>Smart Surveillance</h3>
+          Gesture, face & noise-based monitoring systems for smarter, safer classrooms and spaces.
+        </div>
+        <div class="focus-card">
+          <h3>Autonomous IoT</h3>
+          Edge + cloud IoT networks that sense, decide & act with minimal human intervention.
+        </div>
+        <div class="focus-card">
+          <h3>Secure Full Stack</h3>
+          Robust APIs & dashboards with clean UI/UX for managing data, devices & AI pipelines.
+        </div>
+        <div class="focus-card">
+          <h3>AI for Automation</h3>
+          Using AI to convert manual workflows into intelligent, automated decision-making systems.
+        </div>
+      </div>
+    </section>
+
+    <!-- TECH STACK -->
+    <section id="stack" class="reveal">
+      <div class="section-header">
+        <h2 class="section-title"><span>🧠</span> Tech Stack</h2>
+        <p class="section-subtitle">
+          Tools & technologies I use to move from idea → prototype → production-ready systems.
+        </p>
+      </div>
+
+      <div class="stack-grid glass-panel">
+        <div>
+          <div class="stack-group-title">Core Languages & Frameworks</div>
+          <div class="stack-tags">
+            <span class="stack-tag">Python</span>
+            <span class="stack-tag">C++</span>
+            <span class="stack-tag">JavaScript</span>
+            <span class="stack-tag">HTML</span>
+            <span class="stack-tag">CSS</span>
+            <span class="stack-tag">React</span>
+            <span class="stack-tag">Node.js</span>
+            <span class="stack-tag">Express</span>
+            <span class="stack-tag">MongoDB</span>
+            <span class="stack-tag">FastAPI</span>
+            <span class="stack-tag">Tailwind CSS</span>
+          </div>
+
+          <div style="margin-top:1.3rem;" class="stack-group-title">Design & Prototyping</div>
+          <div class="stack-tags">
+            <span class="stack-tag alt">Figma</span>
+            <span class="stack-tag alt">Canva</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="stack-group-title">AI • Data • IoT • Cloud</div>
+          <div class="stack-tags">
+            <span class="stack-tag alt">TensorFlow</span>
+            <span class="stack-tag alt">OpenCV</span>
+            <span class="stack-tag alt">Pandas</span>
+            <span class="stack-tag alt">NumPy</span>
+            <span class="stack-tag alt">Arduino</span>
+            <span class="stack-tag alt">ESP32</span>
+            <span class="stack-tag alt">Raspberry Pi</span>
+            <span class="stack-tag alt">Git</span>
+            <span class="stack-tag alt">GitHub</span>
+            <span class="stack-tag alt">Linux</span>
+            <span class="stack-tag alt">Docker</span>
+            <span class="stack-tag alt">VS Code</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="reveal">
+      <div class="section-header">
+        <h2 class="section-title"><span>🧩</span> Featured Projects</h2>
+        <p class="section-subtitle">
+          A selection of systems that mix AI, data, vision and automation to solve real problems.
+        </p>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Smart Attendance -->
+        <article class="project-card">
+          <div class="project-pill">AI • Computer Vision</div>
+          <h3 class="project-title">Smart Attendance System</h3>
+          <p class="project-desc">
+            An intelligent attendance system that uses face recognition and automation to mark and store attendance,
+            generate reports, and reduce manual effort in classrooms.
+          </p>
+          <div class="project-meta">
+            <span>Python • OpenCV • Automation</span>
+            <a class="project-link" href="#" onclick="return false;">
+              View Details <i class="bx bx-right-arrow-alt"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- Blood Management System -->
+        <article class="project-card">
+          <div class="project-pill">Full Stack • Healthcare</div>
+          <h3 class="project-title">Blood Management System</h3>
+          <p class="project-desc">
+            A digital platform to manage donors, blood stock, and emergency requests, helping hospitals and people
+            find required blood groups quickly and efficiently.
+          </p>
+          <div class="project-meta">
+            <span>Web App • DB • APIs</span>
+            <a class="project-link" href="#" onclick="return false;">
+              View Overview <i class="bx bx-right-arrow-alt"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- Resume Shortlister -->
+        <article class="project-card">
+          <div class="project-pill">AI • NLP</div>
+          <h3 class="project-title">Resume Shortlister</h3>
+          <p class="project-desc">
+            An AI-powered resume analyzer that scans resumes, compares them with job descriptions, and ranks candidates
+            based on skills, experience, and relevance.
+          </p>
+          <div class="project-meta">
+            <span>LLM • Text Analysis</span>
+            <a class="project-link" href="#" onclick="return false;">
+              See Demo Flow <i class="bx bx-right-arrow-alt"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- Criminal Detector -->
+        <article class="project-card">
+          <div class="project-pill">Surveillance • Analytics</div>
+          <h3 class="project-title">Criminal Detector</h3>
+          <p class="project-desc">
+            A smart detection system concept that aims to identify suspicious activity or known profiles using video feeds,
+            analytics and intelligent pattern recognition.
+          </p>
+          <div class="project-meta">
+            <span>Vision • ML Concepts</span>
+            <a class="project-link" href="#" onclick="return false;">
+              Insights Soon <i class="bx bx-right-arrow-alt"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- Satyagraha.AI -->
+        <article class="project-card">
+          <div class="project-pill">LLM • Social Impact</div>
+          <h3 class="project-title">Satyagraha.AI</h3>
+          <p class="project-desc">
+            An AI-driven initiative idea inspired by Satyagraha, focusing on awareness, guidance and peaceful
+            problem-solving using conversational AI and knowledge systems.
+          </p>
+          <div class="project-meta">
+            <span>LLM • Assistive System</span>
+            <a class="project-link" href="#" onclick="return false;">
+              Coming Soon <i class="bx bx-right-arrow-alt"></i>
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- STATS & QUOTE -->
+    <section class="reveal">
+      <div class="section-header">
+        <h2 class="section-title"><span>📊</span> Cyber Stats & Quote</h2>
+        <p class="section-subtitle">
+          Activity snapshots & a small reminder of the mindset that drives my builds.
+        </p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="glass-panel">
+          <div class="stat-cards">
+            <div class="stat-card">
+              <span>Code Hours</span>
+              <strong>1000+</strong>
+              <span>Night sessions & experiments</span>
+            </div>
+            <div class="stat-card">
+              <span>Domains</span>
+              <strong>AI • IoT</strong>
+              <span>Core focus areas</span>
+            </div>
+            <div class="stat-card">
+              <span>Projects</span>
+              <strong>20+</strong>
+              <span>From idea → deployment</span>
+            </div>
+            <div class="stat-card">
+              <span>Coffee Units</span>
+              <strong>∞</strong>
+              <span>Approximation only 😄</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="quote-box">
+          <div class="quote-main">“Innovate or Fade in the System.”</div>
+          <div class="quote-sub">
+            Every experiment is a new upgrade. Every failure is just a patch note in the changelog.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="reveal">
+      <div class="section-header">
+        <h2 class="section-title"><span>🌐</span> Connect With Me</h2>
+        <p class="section-subtitle">
+          Collaborations, ideas, feedback or just a quick “hi” — I’m always open to future-proof conversations.
+        </p>
+      </div>
+
+      <div class="glass-panel contact-grid">
+        <div>
+          <p class="contact-text">
+            Looking to build something <b>intelligent, automated and slightly futuristic</b>?<br /><br />
+            Whether it's AI-driven systems, IoT experiments or full stack dashboards, I'd love to hear what you're working on.
+          </p>
+
+          <div class="contact-links">
+            <a class="contact-chip" href="https://www.linkedin.com/in/basavaraj-h-a-335753345/" target="_blank">
+              <i class="bx bxl-linkedin-square"></i> LinkedIn
+            </a>
+            <a class="contact-chip" href="mailto:basavarajha05@gmail.com">
+              <i class="bx bxs-envelope"></i> Email
+            </a>
+            <a class="contact-chip" href="https://github.com/basava2005" target="_blank">
+              <i class="bx bxl-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('This is a static demo form. Connect via LinkedIn, email or GitHub!');">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Enter your name" />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="you@example.com" />
+          </div>
+          <div class="field">
+            <label for="msg">Message</label>
+            <textarea id="msg" placeholder="Tell me about your idea or project..."></textarea>
+          </div>
+          <button class="btn-primary" type="submit">
+            Send Message <i class="bx bx-send"></i>
+          </button>
+          <div class="contact-note">
+            This is a front-end only form. In a real deployment, hook it to an API / service like EmailJS, Formspree, or your own backend.
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <span>
+        <i class="bx bx-bulb"></i> © Basavaraj H A — AI • IoT • Full Stack
+      </span>
+      <span>
+        <i class="bx bx-power-off"></i> System Online • Thanks for visiting my neon universe
+      </span>
+    </footer>
+  </main>
+
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.getElementById("navToggle");
+    const header = document.querySelector("header");
+
+    navToggle.addEventListener("click", () => {
+      header.classList.toggle("nav-menu-open");
+    });
+
+    // Scroll reveal
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    revealElements.forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
